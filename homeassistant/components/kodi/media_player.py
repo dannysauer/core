@@ -665,7 +665,7 @@ class KodiDevice(MediaPlayerEntity):
         """Execute turn_on_action to turn on media player."""
         if self._turn_on_action is not None:
             await self._turn_on_action.async_run(
-                variables={"entity_id": self.entity_id}
+                {"entity_id": self.entity_id}, self._context
             )
         else:
             _LOGGER.warning("turn_on requested but turn_on_action is none")
@@ -675,7 +675,7 @@ class KodiDevice(MediaPlayerEntity):
         """Execute turn_off_action to turn off media player."""
         if self._turn_off_action is not None:
             await self._turn_off_action.async_run(
-                variables={"entity_id": self.entity_id}
+                {"entity_id": self.entity_id}, self._context
             )
         else:
             _LOGGER.warning("turn_off requested but turn_off_action is none")
